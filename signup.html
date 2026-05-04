@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sign In - Coffee Bliss</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #fff5ea;
+            margin: 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .signin-container {
+            background: #fff;
+            padding: 40px 30px 34px 30px;
+            border-radius: 14px;
+            box-shadow: 0 6px 30px rgba(111, 78, 55, 0.14), 0 0 0 1px #f5e7d5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 360px;
+            max-width: 95vw;
+        }
+        .logo {
+            font-family: 'Josefin Sans', serif;
+            color: #6F4E37;
+            font-size: 2.2rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 13px;
+        }
+        .logo i {
+            color: #b89469;
+            font-size: 2.25rem;
+        }
+        h2 {
+            margin: 0 0 32px 0;
+            color: #6F4E37;
+            font-family: 'Josefin Sans', serif;
+            font-weight: 700;
+            font-size: 1.65rem;
+            letter-spacing: 1px;
+        }
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+        }
+        label {
+            font-size: 1.04rem;
+            color: #7c604b;
+            margin-left: 3px;
+            font-weight: 500;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            padding: 15px 1px;
+            border: 1px solid #dac2a0;
+            border-radius: 7px;
+            font-size: 1.09rem;
+            background: #faf7f3;
+            color: #43392d;
+            outline: none;
+            transition: border 0.18s;
+            width: 100%;
+        }
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            border: 1.5px solid #6F4E37;
+            background: #fffdf7;
+        }
+        .signin-btn {
+            background: #6F4E37;
+            color: #fff;
+            border: none;
+            border-radius: 7px;
+            padding: 13px 0;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.13rem;
+            font-weight: bold;
+            cursor: pointer;
+            letter-spacing: 1px;
+            margin-top: 5px;
+            box-shadow: 0 2px 8px #6f4e3725;
+            transition: background .18s;
+            width: 100%;
+        }
+        .signin-btn:hover {
+            background: #b49274;
+        }
+        .form-footer {
+            margin-top: 17px;
+            text-align: center;
+            font-size: 1rem;
+            color: #866d57;
+        }
+        .form-footer a {
+            color: #6F4E37;
+            text-decoration: underline;
+            font-weight: 600;
+            transition: color .18s;
+        }
+        .form-footer a:hover {
+            color: #b49274;
+        }
+        @media (max-width: 450px) {
+            .signin-container {
+                padding: 18px 4vw 18px 4vw;
+                width: 99vw;
+            }
+            .logo, h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="signin-container">
+        <div class="logo"><i class="fas fa-mug-hot"></i>Coffee Bliss</div>
+        <h2>Sign Up</h2>
+        <form action="signup.php" method="POST" autocomplete="off">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" placeholder="Your name" required autocomplete="name" />
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="Your email address" required autocomplete="username" />
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" placeholder="Your password" required autocomplete="current-password" />
+            </div>
+            <button type="submit" class="signin-btn">Sign Up</button>
+        </form>
+        <div class="form-footer">
+            Already have an account?
+            <a href="signin.html">Sign in</a>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+</body>
+</html>

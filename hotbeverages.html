@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hot Beverages - Coffee Shop Style</title>
+  <style>
+    body {
+      background: #fffdf7;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      color: #232323;
+    }
+    header {
+      padding: 20px;
+      background: #6f4e37;
+      color: #fff;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+    header p {
+      margin: 8px 0 0;
+      font-size: 1.2em;
+      font-weight: 500;
+      color: #ffdabb;
+    }
+    .container {
+      margin-top: 40px;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 15px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 30px;
+  justify-items: center;
+    }
+    .card {
+      width: 220px;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+      padding: 15px 10px 20px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card img {
+      width: 180px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 12px;
+    }
+    .card h2 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #27ae60;
+      margin: 6px 0 8px 0;
+      text-align: center;
+    }
+    .card p {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #664c35;
+      min-height: 50px;
+      margin-bottom: 14px;
+    }
+    .add-to-cart {
+      padding: 6px 18px;
+      border: none;
+      border-radius: 7px;
+      background: #27ae60;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-size: 0.95rem;
+      font-weight: 600;
+      user-select: none;
+      margin-bottom: 10px;
+      align-self: center;
+      min-width: 110px;
+    }
+    .add-to-cart:hover {
+      background: #219150;
+    }
+    /* Sidebar cart */
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -390px;
+      width: 340px;
+      max-width: 95vw;
+      height: 100vh;
+      background: #fff;
+      box-shadow: -4px 0 12px rgba(40,19,0,0.11);
+      z-index: 999;
+      transition: right .33s cubic-bezier(.68,.01,.21,1.17);
+      border-radius: 15px 0 0 15px;
+      display: flex;
+      flex-direction: column;
+      padding: 20px 16px;
+    }
+    .cart-sidebar.open { right: 0; }
+    .cart-sidebar .close-cart {
+      border: none;
+      background: none;
+      font-size: 2.1rem;
+      color: #6f4e37;
+      position: absolute;
+      top: 9px;
+      right: 12px;
+      cursor: pointer;
+    }
+    .cart-title {
+      font-family: 'Josefin Sans', serif;
+      color: #6f4e37;
+      font-size: 1.27rem;
+      margin: 0 0 6px 0;
+      font-weight: bold;
+    }
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0;
+      margin: 12px 0;
+      list-style: none;
+      font-size: 1.01em;
+      min-height: 60px;
+    }
+    .cart-items li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 8px;
+    }
+    .cart-items li:last-child { border: none; }
+    .cart-total {
+      display: flex; justify-content: space-between;
+      font-weight: bold; color: #6f4e37; font-size: 1.09rem;
+      padding-top: 8px;
+      border-top: 2px solid #e7bfa1;
+      flex-shrink: 0;
+    }
+    .checkout-btn {
+      width: 100%;
+      background: #27ae60;
+      color: #fff;
+      border: none;
+      border-radius: 7px;
+      font-size: 1rem;
+      padding: 20px ;
+      font-weight: bold;
+      margin-top: 12px;
+      margin-bottom: 55px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    /* Cart icon */
+    #cart-toggle {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      background: #6F4E37;
+      padding: 7px 13px;
+      border-radius: 8px;
+      z-index: 1200;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    #cart-badge {
+      background: #b84c31;
+      color: #fff;
+      font-size: 0.9em;
+      border-radius: 50%;
+      width: 20px; height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-left: 2px;
+      border: 2px solid #fff;
+    }
+    /* Responsive grid */
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px 10px;
+      }
+      .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+      }
+      .card {
+        width: 180px;
+      }
+      .card img {
+        width: 150px;
+        height: 135px;
+      }
+      .add-to-cart {
+        min-width: 90px;
+        font-size: 0.85rem;
+        padding: 6px 14px;
+      }
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Hot Coffee Beverages</h1>
+    <p>Creamy and frothy cold coffee drinks to make you cool</p>
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <img src="images/pexels-jill-burrow-7678003.jpg" alt="Espresso" />
+      <h2>Espresso</h2>
+      <p>Strong and bold coffee shot to kickstart your energy.</p>
+      <button class="add-to-cart" data-item="Espresso" data-price="Rs.120">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="images/pexels-tim-douglas-6205620.jpg" alt="Cappuccino" />
+      <h2>Cappuccino</h2>
+      <p>A rich espresso topped with steamed milk and frothy foam.</p>
+      <button class="add-to-cart" data-item="Cappuccino" data-price="Rs.120">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="images/pexels-nibil-3319718-17797619.jpg" alt="Caffè Latte" />
+      <h2>Caffè Latte</h2>
+      <p>Smooth espresso mixed with creamy steamed milk.</p>
+      <button class="add-to-cart" data-item="Caffè Latte" data-price="Rs.150">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="images/pexels-nikita-krasnov-5999644-6006668.jpg" alt="Caffè Mocha" />
+      <h2>Caffè Mocha</h2>
+      <p>A sweet blend of coffee, chocolate, and milk topped with cream.</p>
+      <button class="add-to-cart" data-item="Caffè Mocha" data-price="Rs.120">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="images/pexels-cristian-rojas-7488707.jpg" alt="Americano" />
+      <h2>Americano</h2>
+      <p>Espresso mixed with hot water for a smooth taste.</p>
+      <button class="add-to-cart" data-item="Americano" data-price="Rs.120">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="images/pexels-jbigallery-27560794.jpg" alt="Macchiato" />
+      <h2>Macchiato</h2>
+      <p>Espresso marked with a small amount of steamed milk.</p>
+      <button class="add-to-cart" data-item="Macchiato" data-price="Rs.120">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="images/pexels-fallon-michael-1928485-3551717.jpg" alt="Irish Coffee" />
+      <h2>Irish Coffee</h2>
+      <p>Coffee blended with whiskey, sugar, and topped with cream.</p>
+      <button class="add-to-cart" data-item="Irish Coffee" data-price="Rs.120">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="images/pexels-esra-afsar-123882149-13859937.jpg" alt="Hot Chocolate" />
+      <h2>Hot Chocolate</h2>
+      <p>Rich chocolate drink with hot milk, perfect for cozy evenings.</p>
+      <button class="add-to-cart" data-item="Hot Chocolate" data-price="Rs.120">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- Cart sidebar -->
+  <aside id="cart-sidebar" class="cart-sidebar">
+    <button class="close-cart" id="close-cart" aria-label="Close Cart">&times;</button>
+    <h3 class="cart-title">Your Cart</h3>
+    <ul class="cart-items" id="cart-items"></ul>
+    <div class="cart-total">
+      <span>Total:</span>
+      <span id="cart-total-price">Rs.0.00</span>
+    </div>
+    <button class="checkout-btn">Checkout</button>
+  </aside>
+
+  <!-- Cart icon -->
+  <a href="#" class="cart-link" id="cart-toggle" tabindex="0" title="View Cart">
+    <i class="fas fa-shopping-cart" style="color:#fff;font-size:1.3rem;"></i>
+    <span class="cart-badge" id="cart-badge">0</span>
+  </a>
+
+  <!-- Common cart logic -->
+  <script src="cart.js"></script>
+</body>
+</html>
