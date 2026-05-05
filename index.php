@@ -557,33 +557,33 @@ button[name="logout"]:active {
     
     <ul class="menu-list">
       <li class="menu-item" onclick="location.href='hotbeverages.html'">
-        <img src="images/hot-beverages.png" alt="Hot Beverages" class="menu-image" />
+        <img src="assets/images/hot-beverages.png" alt="Hot Beverages" class="menu-image" />
         <div class="name">Hot Beverages</div>
         <div class="text">A wide range of steaming hot coffee to refresh your senses.</div>
       </li>
       <li class="menu-item" onclick="location.href='coldbeverages.html'">
-        <img src="images/cold-beverages.png" alt="Cold Beverages" class="menu-image" />
+        <img src="assets/images/cold-beverages.png" alt="Cold Beverages" class="menu-image" />
         <div class="name">Cold Beverages</div>
         <div class="text">Chilled, creamy and frothy cold coffee for summer days.</div>
       </li>
       <li class="menu-item" onclick="location.href='refreshment.html'">
-        <img src="images/refreshment.png" alt="Refreshment" class="menu-image" />
+        <img src="assets/images/refreshment.png" alt="Refreshment" class="menu-image" />
         <div class="name">Refreshment</div>
         <div class="text">Fruit and icy drinks to energize your day.</div>
       </li>
       <li class="menu-item" onclick="location.href='speciialcombo.html'">
-        <img src="images/special-combo.png" alt="Special Combos" class="menu-image" />
+        <img src="assets/images/special-combo.png" alt="Special Combos" class="menu-image" />
         <div class="name">Special Combos</div>
         <div class="text">Your favourite eating and drinking combinations.</div>
       </li>
       <li class="menu-item" onclick="location.href='dessert.html'">
-        <img src="images/desserts.png" alt="Dessert" class="menu-image" />
+        <img src="assets/images/desserts.png" alt="Dessert" class="menu-image" />
         <div class="name">Dessert</div>
         <div class="text">Sweet treats to finish your meal perfectly.</div>
 
       </li>
       <li class="menu-item" onclick="location.href='burger.html'">
-        <img src="images/burger-frenchfries.png" alt="Burger & French Fries" class="menu-image" />
+        <img src="assets/images/burger-frenchfries.png" alt="Burger & French Fries" class="menu-image" />
         <div class="name">Burger & French Fries</div>
         <div class="text">Quick bites for your small size hunger.</div>
       </li>
@@ -594,7 +594,7 @@ button[name="logout"]:active {
   <section style="background: #f7ede1; padding:48px 0;" id="about">
     <div style="max-width: 1100px; margin:0 auto; display: flex; flex-wrap:wrap; align-items:center; gap:40px; padding: 0 16px;">
       <div style="flex:1 1 330px; min-width:275px;">
-        <img src="images/about-image.jpg" alt="Coffeehouse Interior" style="width:100%; max-width:410px; border-radius:24px; box-shadow:0 4px 28px #6F4E3725;background: #e2c99c;" />
+        <img src="assets/images/about-image.jpg" alt="Coffeehouse Interior" style="width:100%; max-width:410px; border-radius:24px; box-shadow:0 4px 28px #6F4E3725;background: #e2c99c;" />
       </div>
       <div style="flex:2 1 350px; min-width:270px;">
         <h2 style="font-family: 'Josefin Sans', serif; color: #6F4E37; font-size:2.1rem; margin-bottom:10px;">About Coffee Bliss</h2>
