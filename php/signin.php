@@ -29,7 +29,7 @@ if ($email && $password) {
         // You can fetch the user's name here if your 'user' table has a 'name' column.
         $row = $result->fetch_assoc();
         $_SESSION['username'] = $row['name'];
-        header("Location: ../index.php");
+        header("Location: /CoffeeBliss/index.php");
         // echo "✅ Login successful. Welcome ". htmlspecialchars($name) . "!";
     } else {
         echo "❌ Invalid email or password.";
