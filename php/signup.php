@@ -24,7 +24,7 @@ if ($email && $password && $name) {
         $stmt->bind_param("sss",$name, $email, $password);
         $stmt->execute();
         $result = $stmt->get_result();
-        echo "✅ Login successful. Welcome, " . htmlspecialchars($name) . "!". " Please <a href='signin.html'>login</a> to continue.";
+        echo "✅ Signup successful. Welcome, " . htmlspecialchars($name) . "!". " Please <a href='../signin.html'>login</a> to continue.";
 
         
     }
