@@ -646,13 +646,14 @@ opposite Gomti Apartment, Nagpur
         </div>
       </div>
       <div style="flex:2 1 350px; min-width:250px;">
-        <form method="post" action="feedback.php" 
+        <form id="feedback-form" method="post" action="php/feedback.php" 
         style="background: #fff; border-radius:12px; box-shadow:0 2px 16px #beaa9050; padding:26px 20px; max-width:390px; margin:0 auto;" autocomplete="off">
           <h3 style="font-family:'Josefin Sans', serif; font-size:1.16rem; color:#6F4E37; margin-bottom:16px; font-weight:600;">Feedback</h3>
           <input type="text" placeholder="Your Name" name="name" required style="width:100%; margin-bottom:12px; padding:11px 12px; border:1px solid #e8d8c2; border-radius:7px; font-size:1rem; outline:none;" />
           <input type="email" placeholder="Your Email" name="email" required style="width:100%; margin-bottom:12px; padding:11px 12px; border:1px solid #e8d8c2; border-radius:7px; font-size:1rem; outline:none;" />
           <textarea placeholder="Your Message" name="message" required rows="4" style="width:100%; margin-bottom:16px; padding:11px 12px; border:1px solid #e8d8c2; border-radius:7px; font-size:1rem; resize:vertical; outline:none;"></textarea>
           <button type="submit" style="background:#6F4E37; color:#fff; width:100%; border:none; border-radius:8px; padding:12px 0; font-size:1.14rem; font-weight:bold; cursor:pointer; transition:background .18s;">Send Message</button>
+          <div id="feedback-message" style="margin-top:14px; min-height:20px; font-size:0.95rem;"></div>
       
         </form>
       </div>
