@@ -1,30 +1,39 @@
 <?php
-SESSION_START();
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = htmlspecialchars(trim($_POST['name']));
-    $email = htmlspecialchars(trim($_POST['email']));
-    $message = htmlspecialchars(trim($_POST['message']));
+session_start();
 
-    if (empty($name) || empty($email) || empty($message)) {
-        echo "All fields are required.";
-        exit;
-    }
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    http_response_code(405);
+    echo "Method not allowed.";
+    exit;
+}
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "Invalid email format.";
-        exit;
-    }
+$name = trim($_POST['name'] ?? '');
+$email = trim($_POST['email'] ?? '');
+$message = trim($_POST['message'] ?? '');
 
-    // DB connection (change dbname, user, pass as per your setup)
-    $conn = new mysqli("localhost", "root", "", "users");
+if (empty($name) || empty($email) || empty($message)) {
+    echo "All fields are required.";
+    exit;
+}
 
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    if(!isset($_SESSION['username'])){
-        echo 'Please login to submit feedback.';
-    }else{
-    $stmt = $conn->prepare("INSERT INTO feedback (name, email, message) VALUES (?, ?, ?)");
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo "Invalid email format.";
+    exit;
+}
+
+if (!isset($_SESSION['username'])) {
+    echo "Please login to submit feedback.";
+    exit;
+}
+
+$conn = new mysqli("localhost", "shukla", "shukla123", "users");
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$stmt = $conn->prepare("INSERT INTO feedback (name, email, message) VALUES (?, ?, ?)");
+if ($stmt) {
     $stmt->bind_param("sss", $name, $email, $message);
 
     if ($stmt->execute()) {
@@ -34,8 +43,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $stmt->close();
-    $conn->close();
-}    }
+} else {
+    echo "Unable to submit feedback right now.";
+}
 
-    
+$conn->close();
 ?>

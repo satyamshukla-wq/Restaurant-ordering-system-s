@@ -512,22 +512,17 @@ button[name="logout"]:active {
       <div class="nav-right">
         <?php
         if (isset($_SESSION['username'])) {
-          echo $_SESSION['username']."<style>#signin-link{display:none;}</style>";
-          echo '<form method="post" action="logout.php" style="display:inline;">
+          echo '<span style="margin-right:10px; color:#6F4E37; font-weight:600;">' . htmlspecialchars($_SESSION['username']) . '</span>';
+          echo '<form method="post" action="php/logout.php" style="display:inline;">
                   <button type="submit" name="logout">Logout</button>
                 </form>';
-        }
-        else {
-          echo 'Please login';
+          echo '<style>#signin-link{display:none;}</style>';
+        } else {
+          echo '<a href="signin.html" class="signin-link" id="signin-link" tabindex="0" title="Sign In">
+                  <i class="fas fa-user-circle"></i>
+                </a>';
         }
         ?>
-  <a href="signin.html" class="signin-link" id="signin-link" tabindex="0" title="Sign In">
-    <i class="fas fa-user-circle"></i>
-  </a>
-  <form action="signin.php" method="POST" autocomplete="off">
-  <!-- Your form fields -->
-</form>
-
 </div>
 
     </div>
