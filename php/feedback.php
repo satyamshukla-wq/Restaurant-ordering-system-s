@@ -44,7 +44,7 @@ if ($stmt) {
 
     $stmt->close();
 } else {
-    echo "Unable to submit feedback right now.";
+    echo "Unable to submit feedback right now. Database prepare failed: " . $conn->error;
 }
 
 $conn->close();
